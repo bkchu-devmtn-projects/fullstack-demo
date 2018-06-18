@@ -1,15 +1,20 @@
 require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 // const cors = require('cors');
 const massive = require('massive');
+
+const { CONNECTION_STRING, PORT } = process.env;
+
 const productCtrl = require('./controllers/productsCtrl');
 
 const app = express();
+
 app.use(bodyParser.json());
 // app.use(cors());
 
-massive(process.env.CONNECTION_STRING).then(dbInstance => {
+massive(CONNECTION_STRING).then(dbInstance => {
   return app.set('db', dbInstance);
 });
 
@@ -19,7 +24,8 @@ app.get('/api/test', (req, res) => {
 
 app.get('/api/products', productCtrl.getProducts);
 
-const port = process.env.PORT || 3001;
+const port = PORT || 3001;
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
