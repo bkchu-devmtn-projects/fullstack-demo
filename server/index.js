@@ -22,7 +22,7 @@ app.get('/api/test', (req, res) => {
   res.status(200).send({ message: 'Connected!! wooo!' });
 });
 
-app.get('/api/products/:id', productCtrl.getProductById);
+app.get('/api/products', productCtrl.getProducts);
 
 const port = PORT || 3001;
 
