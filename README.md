@@ -3,5 +3,5 @@
 2. DO NOT yarn install (npm install) or yarn start (npm start).
 3. In the order listed below comment out these files line by line:
   - server/index.js
-  - server/controller/productsCtrl.js
+  - server/controllers/productsCtrl.js
   - src/App.js
